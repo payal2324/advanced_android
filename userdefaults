@@ -1,0 +1,64 @@
+//
+//  ViewController.swift
+//  udtest
+//
+//  Created by MacStudent on 2018-03-13.
+//  Copyright © 2018 MacStudent. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+
+        let x = UserDefaults.standard // equivalent  local  storage...
+        print(x)  //   <NSUserDefaults: 0x608000056980>
+        // stting things in userdefaults
+        x.set(false, forKey: "wifi")
+        x.set(0.59, forKey: "volume")
+        x.set("payal", forKey: "name")
+
+        // gtting things out of Ud
+       let a  =  x.double(forKey: "volume")
+         let b  =  x.string(forKey: "name")
+         let c  =  x.bool(forKey: "wifi")
+        print(a)   //    0.59
+        print(b)   //  Optional("payal")
+        print(c)   //  false
+
+       // Arrays
+
+        //setting values
+        let arr = ["apple","banana", "coconut" , "dates" ]
+      x.set(arr, forKey: "fruit")
+
+        // getting values
+
+        let d = x.array(forKey: "fruit") as! [String]  // type casting as! [String] k swift nu dsea ya k array strings       da ya      as?    means optional chaining k shyd array khali v ho skda ya
+        print(d)
+
+
+        // Dictionary
+
+        let stu = ["name":"Payal Khosla","class":"MADT","dob":"24-01"]
+       x.set(stu, forKey: "studata")
+
+        let e = x.dictionary(forKey: "studata") as! Dictionary<String,String>
+        print(e)
+
+
+
+
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+}
